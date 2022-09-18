@@ -1,0 +1,99 @@
+.header {
+	user-select: none;
+	width: 100%;
+	height: 10vmin;
+	position: fixed;
+	top: 0;
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	grid-template-rows: 1fr;
+	background: #3a6073;
+	z-index: 5;
+}
+
+.menu {
+	width: 100%;
+	height: 10vmin;
+}
+
+.menu ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.menu ul li {
+	padding-top: 2vmin;
+	font-size: 3.5vmin;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.menu ul li:hover {
+	transform: scale(1.1);
+}
+
+.active a {
+	position: relative;
+	color: wheat;
+}
+
+.active a::after {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 5%;
+	left: 0;
+	border-bottom: 2px solid wheat;
+	filter: blur(2px);
+}
+
+.profile {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	align-items: center;
+	justify-items: center;
+}
+
+.avatar img {
+	width: 10vmin;
+	border-radius: 50%;
+}
+
+.profile p {
+	font-size: 4vmin;
+}
+
+/* .profile button {
+	width: 10vmax;
+	height: 7vmin;
+	border-radius: 1vmax;
+	border: none;
+	cursor: pointer;
+	font-size: 4vmin;
+	background: linear-gradient(45deg, #009fff, #ec2f4b);
+	filter: drop-shadow(1vmin 1vmin 1px rgba(0, 0, 0, 0.5));
+	transition: 0.5s;
+}
+
+.profile button:hover {
+	transform: scale(1.05);
+}
+
+.profile button:active {
+	transform: scale(1);
+  transition: 0.1s;
+} */
+
+.profile > img { 
+	width: 9vmin;
+	cursor: pointer;
+	box-sizing: border-box;
+	transition: 1s;
+}
+
+.profile > img:hover { 
+transform: translateX(1vmax);
+}

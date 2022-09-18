@@ -1,0 +1,36 @@
+.wrapper {
+  position: relative;
+  margin-top: 3vmin;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+  column-gap: 3px;
+  text-align: center;
+}
+
+.grp {
+  position: absolute;
+  top: -35%;
+  left: 0;
+  font-size: 3.5vmin;
+  color: wheat
+}
+.group{
+  width: 7vmin;
+  border: 1px solid black;
+  padding-top: 2vmin;
+  font-size: 8vmin;
+}
+.names {
+  display: flex;
+  min-width: 8vmax;
+  align-content: center;
+	justify-content: center;
+  flex-direction: column;
+	row-gap: 3px;
+	font-size: 2.5vmin;
+}
+
+.names > div {
+  border: 1px solid black;
+}

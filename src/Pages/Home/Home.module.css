@@ -1,0 +1,140 @@
+.wrapper {
+	padding-top: 20vmin;
+	padding-left: 5vmax;
+	display: grid;
+	grid-template-columns: 1fr 30vmax;
+}
+
+.keys {
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	flex-direction: column;
+	row-gap: 5vmin;
+	padding-bottom: 5vmin;
+}
+
+.row {
+	width: 100%;
+}
+
+.search {
+	width: 100%;
+	display: flex;
+	padding-bottom: 45vmin;
+	flex-direction: column;
+	row-gap: 3vmin;
+	justify-content: center;
+	align-content: center;
+}
+
+.search p {
+	font-size: 3vmin;
+	text-align: center;
+}
+
+.search ul {
+	width: 15vmax;
+	display: flex;
+	align-self: center;
+	flex-wrap: wrap;
+	row-gap: 2vmin;
+	column-gap: 2vmin;
+}
+.search ul li {
+	width: calc(50% - 1vmin);
+	padding: 1.5vmin;
+	border: 1px solid black;
+	border-radius: 1vmax;
+	text-align: center;
+	font-size: 3vmin;
+	transition: 1s;
+	cursor: pointer;
+}
+
+.searched {
+	transform: scale(1.1);
+	background: #71B280;
+}
+
+.nonsearched {
+	transform: scale(0.8);
+}
+
+.loader {
+	position: absolute;
+	top: 40vmin;
+	left: 30vmax;
+}
+
+.titleSelect {
+	position: fixed;
+	left: var(--titlex);
+	top: var(--titley);
+	padding: 3vmin 2vmin 2vmin 3.5vmin;
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 2vmax;
+	z-index: 11;
+	transition: 1s;
+}
+
+.titleSelect ul {
+	width: 40vmin;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.titleSelect li,
+.lvlSelect li {
+	width: 6vmax;
+	height: 5vmin;
+	display: flex;
+	justify-content: center;
+	padding-top: 0.75vmin;
+	margin-bottom: 1vmin;
+	margin-right: 1vmin;
+	background: orange;
+	border-radius: 1vmin;
+	font-size: 3vmin;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.lvlSelect {
+	width: 22vmax;
+	position: fixed;
+	top: var(--lvly);
+	left: var(--lvlx);
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	padding: 3vmin 2vmin 2vmin 3.5vmin;
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 2vmax;
+	z-index: 11;
+	transition: 1s;
+}
+
+.lvlSelect ul {
+	height: 31vmin;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.titleSelect li:hover,
+.lvlSelect li:hover {
+	transform: scale(1.1);
+	background: wheat;
+}
+
+.show {
+	transform: scale(1);
+}
+
+.hide {
+	transform: scale(0);
+}

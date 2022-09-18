@@ -1,0 +1,157 @@
+.wrapper {
+	min-height: 90vh;
+	padding-top: 20vmin;
+}
+
+.invite {
+	position: fixed;
+	left: 2vmax;
+	width: 18vmax;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	row-gap: 3.5vmin;
+}
+
+.invite button {
+	height: 8vmin;
+	border: none;
+	border-radius: 2vmin;
+	font-size: 3.5vmin;
+	background: linear-gradient(45deg, #348f50, #56b4d3);
+	filter: drop-shadow(1vmin 1vmin 3px rgba(0, 0, 0, 0.5));
+	cursor: pointer;
+	transition: 1s;
+}
+
+.invite button:hover {
+	transform: scale(1.05);
+}
+
+.invite button:active {
+	transform: scale(1);
+	transition: 0.1s;
+}
+
+.invite > textarea {
+	width: 18vmax;
+	height: 20vmin;
+	overflow: hidden;
+	display: flex;
+	text-align: center;
+	background: transparent;
+	border: none;
+	resize: none;
+	font-size: 2vmin;
+	padding: 3vmin 1vmax;
+	border: 1px solid black;
+	border-radius: 2vmin;
+  box-shadow: 1vmin 0.5vmin 3px rgba(0, 0, 0, 0.5);
+}
+
+.invite > textarea:focus {
+	outline: none;
+}
+
+.helpers p {
+	text-align: center;
+	font-size: 2.5vmin;
+}
+
+.change_group {
+	position: relative;
+	height: 10vmin;
+	width: 15vmax;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center;
+	column-gap: 2vmax;
+	text-align: center;
+	row-gap: 2vmin;
+}
+.change_group > span {
+	position: absolute;
+	top: 100%;
+	font-size: 2vmin;
+}
+
+.change_group > div {
+	display: flex;
+	flex-direction: column;
+}
+
+.change_group > p {
+	font-size: 3vmin;
+}
+
+.change_group > p > span {
+	font-size: 5vmin;
+}
+
+.change_group img {
+	height: 4vmin;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.down {
+	transform: rotateZ(180deg);
+}
+
+.down:hover {
+	transform: rotateZ(180deg) scale(1.2);
+}
+
+.up:hover {
+	transform: scale(1.2);
+}
+
+.orders {
+	/* width: 100%; */
+	display: flex;
+	flex-direction: column;
+	row-gap: 3px;
+	align-self: flex-start;
+	justify-self: start;
+	padding-left: 24vmax;
+}
+
+.loader {
+	padding-left: 30vmax;
+	padding-top: 15vmin;
+}
+
+.content {
+	/* width: 100%; */
+	display: flex;
+	column-gap: 3vmax;
+	transition: 0.5s;
+}
+
+.images {
+	position: relative;
+	display: flex;
+}
+
+.images img {
+	position: absolute;
+	align-self:center;
+	left: var(--x);
+	top: var(--y);
+	height: 6vmin;;
+	transform: scale(0);
+	filter: opacity(0);
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+
+.content:hover img {
+	transform: scale(1);
+	filter: opacity(1);
+}
+
+.row:hover{
+	background: #ACBB78;
+}

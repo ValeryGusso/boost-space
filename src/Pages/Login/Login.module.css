@@ -1,0 +1,106 @@
+.wrapper {
+	width: 30vmax;
+	min-height: 45vmin;
+	margin-top: 30vmin;
+	margin-left: 35vmax;
+	padding-top: 5vmin;
+	display: grid;
+	grid-template-rows: 12vmin 12vmin 10vmin;
+	align-items: center;
+	justify-items: center;
+	border: 2px solid black;
+	border-radius: 2vmax;
+	background: rgba(0, 0, 0, 0.15);
+	box-shadow: 2vmin 1vmin 3px rgba(0, 0, 0, 0.5);
+}
+
+.wrapper > div {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1vmin;
+}
+
+.wrapper input {
+	position: relative;
+	width: 15vmax;
+	height: 6vmin;
+	border: none;
+	border-radius: 1vmin;
+	padding-left: 1vmax;
+	padding-top: 0.25vmin;
+	font-size: 3vmin;
+	background: rgba(255, 255, 255, 0.5);
+	transition: 0.5s;
+}
+
+.wrapper input:focus {
+	outline: none;
+	background: rgba(255, 255, 255, 1);
+	filter: drop-shadow(1vmin 1vmin 5px rgba(0, 0, 0, 0.5));
+}
+
+.wrapper p {
+	font-size: 3vmin;
+}
+
+.wrapper button {
+	width: 10vmax;
+	height: 7vmin;
+	margin-top: 2vmin;
+	border: none;
+	border-radius: 2vmin;
+	font-size: 3vmin;
+	background: linear-gradient(45deg, #348f50, #56b4d3);
+	filter: drop-shadow(1vmin 1vmin 3px rgba(0, 0, 0, 0.5));
+	cursor: pointer;
+	transition: 1s;
+}
+
+.wrapper button:hover {
+	transform: scale(1.05);
+}
+
+.wrapper button:active {
+	transform: scale(1);
+	transition: 0.1s;
+}
+
+.wrapper button:disabled {
+	background: grey;
+	filter: blur(2px);
+	cursor: default;
+}
+
+.wrapper button:disabled:hover {
+	background: grey;
+	transform: none;
+}
+
+.err input {
+	position: relative;
+	border: 4px solid red !important;
+}
+.err::before {
+	content: 'Имя или пароль указаны неверно';
+	position: absolute;
+	top: 8.25vmin;
+	left: 1.2vmax;
+	padding: 1vmin;
+	border-radius: 1vmin;
+	background-color: rgba(255, 50, 0, 1);
+	color: wheat;
+	z-index: 5;
+}
+
+.pass {
+	position: relative;
+}
+
+.pass img {
+	position: absolute;
+	top: 6vmin;
+	right: 0.5vmax;
+	width: 4vmin;
+	cursor: pointer;
+}
