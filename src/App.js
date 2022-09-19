@@ -50,7 +50,7 @@ function App() {
 					<Route path="/reg" element={<Registration />} />
 					<Route path="/welcome" element={<Welcome />} />
 				</Routes>
-				{/* {isAuth && <Footer /> } */}
+				{isAuth && <Footer /> }
 		</div>
 	)
 }

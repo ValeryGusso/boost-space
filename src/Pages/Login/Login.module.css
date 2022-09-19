@@ -8,9 +8,9 @@
 	grid-template-rows: 12vmin 12vmin 10vmin;
 	align-items: center;
 	justify-items: center;
-	border: 2px solid black;
+	border: 2px solid rgba(255, 255, 255, 0.2);
 	border-radius: 2vmax;
-	background: rgba(0, 0, 0, 0.15);
+	background: rgba(0, 0, 0, 0.1);
 	box-shadow: 2vmin 1vmin 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -30,13 +30,13 @@
 	padding-left: 1vmax;
 	padding-top: 0.25vmin;
 	font-size: 3vmin;
-	background: rgba(255, 255, 255, 0.5);
+	background: rgba(255, 255, 255, 0.4);
 	transition: 0.5s;
 }
 
 .wrapper input:focus {
 	outline: none;
-	background: rgba(255, 255, 255, 1);
+	background: rgba(255, 255, 255, 0.85);
 	filter: drop-shadow(1vmin 1vmin 5px rgba(0, 0, 0, 0.5));
 }
 
@@ -51,6 +51,7 @@
 	border: none;
 	border-radius: 2vmin;
 	font-size: 3vmin;
+	color: #112434;
 	background: linear-gradient(45deg, #348f50, #56b4d3);
 	filter: drop-shadow(1vmin 1vmin 3px rgba(0, 0, 0, 0.5));
 	cursor: pointer;

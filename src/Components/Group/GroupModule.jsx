@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { useSelector } from 'react-redux'
-import { dungeonsTitles } from '../../assets/constants'
+import { classes, dungeonsTitles } from '../../assets/constants'
 import cls from './GroupModule.module.css'
 
 const titles = [
@@ -13,6 +13,14 @@ const titles = [
 const GroupModule = ({ characters, title, search }) => {
 	const id = useSelector(state => state.auth.id)
 
+	function findCollor(name) {
+		for (let i = 0; i < classes.length; i++) {
+			if (classes[i].title === name) {
+				return classes[i].color
+			}
+		}
+	}
+
 	return (
 		<div className={cls.wrapper}>
 			<div className={cls.title}>
@@ -21,7 +29,14 @@ const GroupModule = ({ characters, title, search }) => {
 			</div>
 			<div className={cls.class}>
 				{characters.map(el => (
-					<div key={el.id} className={search.includes(el.data.key) ? cls.searched : ''}>
+					<div
+						key={el.id}
+						className={classNames(
+							search.includes(el.data.key) ? cls.searched : '',
+							search.length === 0 && el.data.class ? cls.colored : ''
+						)}
+						style={{ '--color': findCollor(el.data.class) }}
+					>
 						{el.data.class || '---'}
 					</div>
 				))}

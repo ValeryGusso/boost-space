@@ -44,17 +44,18 @@
 .search ul li {
 	width: calc(50% - 1vmin);
 	padding: 1.5vmin;
-	border: 1px solid black;
+	border: 1px solid rgba(255, 255, 255, 0.2);
 	border-radius: 1vmax;
 	text-align: center;
 	font-size: 3vmin;
-	transition: 1s;
+	transition: 0.5s;
 	cursor: pointer;
 }
 
 .searched {
-	transform: scale(1.1);
-	background: #71B280;
+	transform: scale(1.1);	
+	color: #112434;
+	background: #77A1D3
 }
 
 .nonsearched {
@@ -94,7 +95,8 @@
 	padding-top: 0.75vmin;
 	margin-bottom: 1vmin;
 	margin-right: 1vmin;
-	background: orange;
+	background: #ff9966;
+	color: #112434;
 	border-radius: 1vmin;
 	font-size: 3vmin;
 	cursor: pointer;

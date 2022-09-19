@@ -13,11 +13,10 @@
   top: -35%;
   left: 0;
   font-size: 3.5vmin;
-  color: wheat
 }
 .group{
   width: 7vmin;
-  border: 1px solid black;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 2vmin;
   font-size: 8vmin;
 }
@@ -32,5 +31,5 @@
 }
 
 .names > div {
-  border: 1px solid black;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }

@@ -8,6 +8,7 @@
 	grid-template-columns: 3fr 1fr;
 	grid-template-rows: 1fr;
 	background: #3a6073;
+	background: #232526;
 	z-index: 5;
 }
 
@@ -66,32 +67,13 @@
 	font-size: 4vmin;
 }
 
-/* .profile button {
-	width: 10vmax;
-	height: 7vmin;
-	border-radius: 1vmax;
-	border: none;
-	cursor: pointer;
-	font-size: 4vmin;
-	background: linear-gradient(45deg, #009fff, #ec2f4b);
-	filter: drop-shadow(1vmin 1vmin 1px rgba(0, 0, 0, 0.5));
-	transition: 0.5s;
-}
-
-.profile button:hover {
-	transform: scale(1.05);
-}
-
-.profile button:active {
-	transform: scale(1);
-  transition: 0.1s;
-} */
-
 .profile > img { 
 	width: 9vmin;
+	padding-top: 1vmin;
 	cursor: pointer;
 	box-sizing: border-box;
 	transition: 1s;
+	filter: invert(0.75);
 }
 
 .profile > img:hover { 

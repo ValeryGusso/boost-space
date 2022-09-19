@@ -3,8 +3,6 @@
 	display: grid;
 	grid-template-columns: 5vmax 4vmax 1fr 6vmax 6vmax 1fr;
 	grid-template-rows: 1fr;
-	/* display: flex;
-	flex-direction: row; */
 	column-gap: 3px;
 	align-items: center;
 	justify-items: center;
@@ -17,7 +15,8 @@
 	padding: 0.5vmin;
 	display: flex;
 	justify-content: center;
-	border: 1px solid black;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 0.5vmin
 }
 
 .container div p,

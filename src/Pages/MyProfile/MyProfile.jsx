@@ -46,9 +46,18 @@ const MyProfile = () => {
 		setSelectedChar(0)
 	}
 
-	useEffect(() => {
-		dispatch(fetchUsers())
-	}, [])
+	// useEffect(() => {
+	// 	dispatch(fetchUsers())
+
+	// 	setInputName(me.name)
+	// 	setInputAvatar(me.avatar)
+	// 	setGroup(me.group)
+	// 	setRole(me.role)
+	// 	setMain(me.characters?.main.class)
+	// 	setFirst(me.characters?.first.class)
+	// 	setSecond(me.characters?.second.class)
+	// 	setThird(me.characters?.third.class)
+	// }, [])
 
 	useEffect(() => {
 		if (success) {
@@ -88,7 +97,7 @@ const MyProfile = () => {
 
 	function changeName(event) {
 		if (inputName.length < 13) {
-		setInputName(event.target.value)
+			setInputName(event.target.value)
 		}
 		if (inputName.length >= 13) {
 			const prev = inputName

@@ -4,7 +4,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 10;
 }
 
@@ -14,7 +14,7 @@
   top: 25vmin;
   padding-bottom: 5vmin;
   left: 30vmax;
-  border: 1vmin solid wheat;
+  border: 1vmin solid #c9c7c3;
   border-radius: 4vmin;
 }
 
@@ -29,7 +29,7 @@
 .chield div p,
 .chield div a {
   font-size: 1.75vmin;
-  color: wheat;
+  /* color: wheat; */
   border: none
 }
 
@@ -43,13 +43,12 @@
   background: none;
   border: none;
 }
- 
 
 .content p {
   padding: 6vmin 3vmax 0 3vmax;
   font-size: 3vmin;
   text-align: center;
-  color: wheat;
+  color: #77A1D3;
 }
 
 .buttons {
@@ -60,15 +59,16 @@
 }
 
 .buttons button {
+  height: 10vmin;
   background: none!important;
   border: 0.25vmin solid transparent!important;
   box-sizing: border-box!important;
   border-radius: 2vmin!important;
   padding: 2vmin 2vmax 2vmin 2vmax!important;
   font-size: 4vmin!important;
-  color: white;
   cursor: pointer;
   transition: 0.5s!important;
+  padding-bottom: 1vmin!important;
 }
 
 
@@ -76,7 +76,7 @@
   filter: blur(3px);
 }
 .buttons button:hover {
-  border: 0.25vmin solid white!important;
+  border: 0.25vmin solid #c9c7c3!important;
   transform: none!important;
   filter: blur(0);
   box-shadow: 0.5vmin -0.5vmin 5px rgba(255, 255, 255, 0.75);

@@ -1,10 +1,11 @@
 .footer {
-	position: fixed;
+	/* position: fixed; */
 	bottom: 0;
 	width: 100vmax;
-	height: 10vmin;
+	height: 5vmin;
 	display: flex;
 	justify-content: space-between;
+	background: transparent
 }
 
 .left {
@@ -17,16 +18,16 @@
 .left p {
 	margin-top: 7vmin;
 	font-size: 2vmin;
-	color: rgba(0, 0, 0, 0.4);
 }
 
 .left img {
 	width: 10vmin;
 	height: 10vmin;
+	filter: invert(0.75);
 }
 
 .right {
-	padding-top: 6vmin;
+	padding-top: 1vmin;
 	padding-right: 2vmax;
 	display: flex;
 	flex-direction: row;
@@ -44,5 +45,4 @@
 .right p {
 	align-self: center;
 	user-select: text;
-	color: rgba(0, 0, 0, 0.4);
 }

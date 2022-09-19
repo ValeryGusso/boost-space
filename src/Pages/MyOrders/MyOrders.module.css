@@ -1,11 +1,11 @@
 .home {
 	width: 100%;
-	min-height: 90vmin;
+	min-height: 95vmin;
 	display: flex;
 	flex-direction: row;
 	column-gap: 3vmax;
 	padding-left: 1vmax;
-	overflow-x: hidden!important;
+	overflow-x: hidden !important;
 }
 
 .calendar {
@@ -68,7 +68,7 @@
 .input_cal {
 	width: 12vmax;
 	height: 5vmin;
-	background: rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.4);
 	border: none;
 	padding-top: 0.25vmin;
 	border-radius: 2vmin;
@@ -80,7 +80,7 @@
 .input_cal:focus,
 .focus {
 	outline: none;
-	background: rgba(255, 255, 255, 0.7);
+	background: rgba(255, 255, 255, 0.85);
 }
 
 .input_cal::placeholder {
@@ -127,7 +127,7 @@
 .search input {
 	width: 25vmax;
 	height: 5vmin;
-	background: rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.4);
 	border: none;
 	padding-top: 0.25vmin;
 	border-radius: 2vmin;
@@ -136,7 +136,7 @@
 }
 
 .search input:focus {
-	background: white;
+	background: rgba(255, 255, 255, 0.85);
 	outline: none;
 }
 
@@ -157,7 +157,7 @@
 	padding: 4vmin;
 	/* z-index: 2; */
 	border-radius: 2vmax;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.75);
 }
 
 .searchList ul li {
@@ -166,8 +166,14 @@
 	border-radius: 2vmin;
 	cursor: pointer;
 	transition: 0.5s;
+	color: #112434;
 	border: 1px solid black;
-	background: darkkhaki;
+	background: rgba(85, 154, 157, 0.75);
+	transition: 0.5s;
+}
+
+.searchList ul li:hover {
+	transform: translateX(1vmax);
 }
 
 .container {

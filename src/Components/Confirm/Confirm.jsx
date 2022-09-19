@@ -30,7 +30,7 @@ const Confirm = ({ text, callbackNo, callbackYes, children, id, type, request })
 			<div className={cls.content}>
 				<p>{text}</p>
 				{type === 'admin' && <div className={cls.chield}>{children}</div>}
-				{type === 'period' && <p>{children}</p>}
+				{type === 'period' && <p className={cls.period}>{children}</p>}
 				<div className={cls.buttons}>
 					<button onClick={clickNo}>Отмена</button>
 					<button onClick={clickYes}>Продолжить</button>

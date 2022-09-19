@@ -7,10 +7,15 @@
 	padding: 0;
 	box-sizing: border-box;
 	text-decoration: none;
-	color: black;
+	color: #c9c7c3;
+	/* color: #d7dde8; */
 	list-style: none;
 	font-family: 'Pangolin', cursive;
 	user-select: none;
+}
+
+input, textarea {
+	color: #112434
 }
 
 *::-webkit-scrollbar {
@@ -21,7 +26,7 @@
 body {
 	width: 100%;
 	height: 100vh;
-	background: #3A6073;
+	background: #232526;
 	overflow-x: hidden;
 }
 

@@ -7,7 +7,7 @@ const Footer = () => {
 	return (
 		<div className={cls.footer}>
 			<div className={cls.left}>
-				<img src={goose} alt="goose" />
+				{/* <img src={goose} alt="goose" /> */}
 				{/* <p>Разработано Gusso специально для Совятника</p> */}
 			</div>
 			<div className={cls.right}>

@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import { useRef } from 'react'
 import { useState } from 'react'
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { dungeonLvls, dungeonsTitles } from '../../assets/constants'
 import axios from '../../axiosSettings'
@@ -20,10 +19,6 @@ const Home = () => {
 	const [showTitle, setShowTitle] = useState(false)
 	const [showLvl, setShowLvl] = useState(false)
 	const character = useRef()
-
-	useEffect(() => {
-		dispatch(fetchUsers())
-	}, [])
 
 	function select(el) {
 		const prev = [...search]

@@ -21,6 +21,11 @@
 	font-size: 3vmin
 }
 
+.colored{
+	color: #112423!important;
+	background: var(--color)
+}
+
 .class,
 .key,
 .lvl {
@@ -36,9 +41,10 @@
 .lvl div {
 	width: 100%;
 	height: 100%;
-	border: 1px solid black;
+	border: 1px solid rgba(255, 255, 255, 0.2);
 	row-gap: 2vmin;
 	transition: 0.5s;
+	color: #c9c7c3;
 }
 
 .key div,
@@ -48,12 +54,15 @@
 
 .my:hover,
 .my:hover {
-	background: wheat;
+	color: #112424;
+	background: #77A1D3;
 	transform: scale(1.1);
 	cursor: pointer;
-	border-radius: 1vmin;
+	border-radius: 0.5vmin;
 }
 
 .searched {
-	background: #71B280
+	color: #112434!important;
+	/* background: #71B280; */
+	background: #77A1D3!important
 }

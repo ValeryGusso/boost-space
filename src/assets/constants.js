@@ -13,9 +13,9 @@ export const classes = [
 	{ title: 'DK', color: '#c41e3b' },
 ]
 export const roles = [
-	{ title: 'DPS', color: 'tomato' },
-	{ title: 'Heal', color: 'forestgreen' },
-	{ title: 'Tank', color: 'cornflowerblue' },
+	{ title: 'DPS', color: '#e65245' },
+	{ title: 'Heal', color: '#67B26F' },
+	{ title: 'Tank', color: '#4ca2cd' },
 ]
 
 export const dungeonsTitles = ['---', 'GD', 'ID', 'RtKL', 'RtKU', 'JY', 'WS', 'STR', 'SG']

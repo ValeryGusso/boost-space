@@ -16,7 +16,7 @@
   justify-items: center;
   border: 2px solid black;
   border-radius: 2vmax;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.1);
   box-shadow: 2vmin 1vmin 3px rgba(0, 0, 0, 0.5);
 
 }
@@ -38,7 +38,7 @@
   padding-top: 0.25vmin;
   font-size: 3vmin;
   transition: 0.5s;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .wrapper input::placeholder {
@@ -49,7 +49,7 @@
 .wrapper input:focus {
   outline: none;
 	filter: drop-shadow(1vmin 1vmin 5px rgba(0, 0, 0, 0.5));
-  background: rgba(255, 255, 255, 1)
+  background: rgba(255, 255, 255, 0.85)
 }
 
 .wrapper p {
@@ -98,14 +98,14 @@
   border-radius: 2vmin;
   padding: 1vmin 1vmax;
   transition: 0.5s;
-  background: rgba(255, 255, 255, 0.5)
+  background: rgba(255, 255, 255, 0.4)
 }
 
 .invite textarea:focus {
   outline: none;
   transform: scale(1.05);
 	filter: drop-shadow(1vmin 1vmin 5px rgba(0, 0, 0, 0.5));
-  background: rgba(255, 255, 255, 1)
+  background: rgba(255, 255, 255, 0.85)
 }
 
 .invite textarea::placeholder {
@@ -204,6 +204,7 @@
   left: 54.5vmax;
   width: 7vmin;
   cursor: pointer;
+  filter: invert(0.75);
 }
 
 .frame > p {
@@ -220,15 +221,15 @@
 	text-align: center;
 	border-radius: 3vmax;
 	line-height: 5vmin;
-	color: wheat;
 	padding: 3vmax;
-	background: linear-gradient(45deg, #fe8c00, #f83600);
+	background: linear-gradient(45deg, #ff9966, #ff5e62);
 	z-index: 10;
 }
 
 .warning > span {
 	font-size: 4vmin;
 	font-weight: bold;
+  color: #112434
 }
 
 .warning > span:last-of-type {
@@ -237,6 +238,7 @@
 }
 
 .warning > span:last-of-type:hover {
-	color: green;
-	border-bottom: 1vmin solid green;
+	color: olivedrab;
+	border-bottom: 1vmin solid olivedrab;
+  ;
 }

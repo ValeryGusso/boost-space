@@ -23,15 +23,16 @@
 
 .options a {
 	padding: 2vmin;
-	border: 1px solid black;
+	border: 1px solid rgba(255, 255, 255, 0.2);
 	border-radius: 2vmin;
 	font-size: 3.5vmin;
-  transition: 1s;
+  transition: 0.3s;
 }
 
 .options a:hover {
-	transform: scale(1.1);
-	background: wheat;
+	transform: scale(1.05);
+	/* color: #112434; */
+	background: rgba(255, 255, 255, 0.2);
 }
 
 .wrapper img {
