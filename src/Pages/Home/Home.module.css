@@ -1,4 +1,5 @@
 .wrapper {
+	position: relative;
 	padding-top: 20vmin;
 	padding-left: 5vmax;
 	display: grid;
@@ -19,6 +20,9 @@
 }
 
 .search {
+	position: fixed;
+	top: 20vmin;
+	right: -35vmax;
 	width: 100%;
 	display: flex;
 	padding-bottom: 45vmin;
