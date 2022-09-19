@@ -46,6 +46,14 @@ const MyProfile = () => {
 		setSelectedChar(0)
 	}
 
+	function findColor(className) {
+		for (let i = 0; i < classes.length; i++) {
+			if (classes[i].title === className) {
+				return classes[i].color
+			}
+		}
+	}
+
 	// useEffect(() => {
 	// 	dispatch(fetchUsers())
 
@@ -215,16 +223,16 @@ const MyProfile = () => {
 				</div>
 				<div className={cls.characters} onClick={showClass}>
 					<div data-char={1} className={selectedChar === 1 ? cls.active : ''}>
-						Main: {main}
+						Main: <span style={{'--color': findColor(main)}}>{main}</span>
 					</div>
 					<div data-char={2} className={selectedChar === 2 ? cls.active : ''}>
-						1st twink: {first}
+						1st twink: <span style={{'--color': findColor(first)}}>{first}</span>
 					</div>
 					<div data-char={3} className={selectedChar === 3 ? cls.active : ''}>
-						2nd twink: {second}
+						2nd twink: <span style={{'--color': findColor(second)}}>{second}</span>
 					</div>
 					<div data-char={4} className={selectedChar === 4 ? cls.active : ''}>
-						3rd twink: {third}
+						3rd twink: <span style={{'--color': findColor(third)}}>{third}</span>
 					</div>
 					<ul className={showCharList ? cls.hide : cls.show}>
 						{classes.map((el, i) => (

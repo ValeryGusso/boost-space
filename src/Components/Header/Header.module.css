@@ -18,6 +18,7 @@
 }
 
 .menu ul {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -30,13 +31,20 @@
 	transition: 0.3s;
 }
 
-.menu ul li:hover {
+.menu ul li a{
+	color: rgba(255, 255, 255, 0.2);
+	
+}
+
+.menu ul li:hover,
+.menu ul li a:hover {
 	transform: scale(1.1);
+	color: #77A1D3!important;
 }
 
 .active a {
 	position: relative;
-	color: wheat;
+	color: #77A1D3!important;
 }
 
 .active a::after {
@@ -46,7 +54,7 @@
 	position: absolute;
 	top: 5%;
 	left: 0;
-	border-bottom: 2px solid wheat;
+	border-bottom: 2px solid #77A1D3;
 	filter: blur(2px);
 }
 
@@ -67,7 +75,7 @@
 	font-size: 4vmin;
 }
 
-.profile > img { 
+.profile > img {
 	width: 9vmin;
 	padding-top: 1vmin;
 	cursor: pointer;
@@ -76,6 +84,6 @@
 	filter: invert(0.75);
 }
 
-.profile > img:hover { 
-transform: translateX(1vmax);
+.profile > img:hover {
+	transform: translateX(1vmax);
 }

@@ -48,7 +48,7 @@ const Header = () => {
 					{menuList.map((el, i) => {
 						return !((i === 1 || i === 2 || i === 3) && !me?.isAdmin) ? (
 							<li key={i} onClick={() => menuClick(i)} className={activePage === i ? cls.active : ''}>
-								<Link to={el.link}> {el.title}</Link>
+								<Link to={el.link} data-text={el.title}> {el.title}</Link>
 							</li>
 						) : (
 							''

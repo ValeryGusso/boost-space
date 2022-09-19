@@ -63,6 +63,7 @@
 
 .date_range img {
 	transform: rotateZ(90deg) scale(1.5);
+	filter: invert(0.75);
 }
 
 .input_cal {
