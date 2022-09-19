@@ -158,12 +158,14 @@ const MyProfile = () => {
 								type={showPass ? 'text' : 'password'}
 								value={password}
 								onChange={e => setPassword(e.target.value)}
+								placeholder={'Не менее 5 символов'}
 							/>
 							<img src={showPass ? eyeHide : eye} alt="eye" onClick={() => setShowPass(!showPass)} />
 						</div>
 						<div className={cls.passPlace}>
 							Подтверди пароль:
-							<input type={showPass ? 'text' : 'password'} value={confirm} onChange={e => setConfirm(e.target.value)} />
+							<input type={showPass ? 'text' : 'password'} value={confirm} onChange={e => setConfirm(e.target.value)}
+							placeholder={'Не менее 5 символов'} />
 							<img src={showPass ? eyeHide : eye} alt="eye" onClick={() => setShowPass(!showPass)} />
 						</div>
 					</div>
