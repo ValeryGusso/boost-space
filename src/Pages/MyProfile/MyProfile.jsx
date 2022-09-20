@@ -11,6 +11,7 @@ import eye from '../../assets/img/eye.svg'
 import eyeHide from '../../assets/img/hide.svg'
 import { useEffect } from 'react'
 import { fetchUsers } from '../../Redux/slices/users'
+import Loader from '../../Components/Loader/Loader'
 
 const MyProfile = () => {
 	const dispatch = useDispatch()
@@ -18,7 +19,7 @@ const MyProfile = () => {
 	const [showRoleList, setShowRolelist] = useState(true)
 	const [password, setPassword] = useState('')
 	const [confirm, setConfirm] = useState('')
-	const me = useSelector(state => state.users.me)
+	const { me, isLoading } = useSelector(state => state.users)
 	const [inputName, setInputName] = useState(me.name)
 	const [inputAvatar, setInputAvatar] = useState(me.avatar)
 	const [group, setGroup] = useState(me.group)
@@ -54,18 +55,20 @@ const MyProfile = () => {
 		}
 	}
 
-	// useEffect(() => {
-	// 	dispatch(fetchUsers())
+	useEffect(() => {
+		dispatch(fetchUsers())
+	}, [])
 
-	// 	setInputName(me.name)
-	// 	setInputAvatar(me.avatar)
-	// 	setGroup(me.group)
-	// 	setRole(me.role)
-	// 	setMain(me.characters?.main.class)
-	// 	setFirst(me.characters?.first.class)
-	// 	setSecond(me.characters?.second.class)
-	// 	setThird(me.characters?.third.class)
-	// }, [])
+	useEffect(() => {
+		setInputName(me.name)
+		setInputAvatar(me.avatar)
+		setGroup(me.group)
+		setRole(me.role)
+		setMain(me.characters?.main.class)
+		setFirst(me.characters?.first.class)
+		setSecond(me.characters?.second.class)
+		setThird(me.characters?.third.class)
+	}, [isLoading])
 
 	useEffect(() => {
 		if (success) {
@@ -153,106 +156,120 @@ const MyProfile = () => {
 
 	return (
 		<div className={cls.wrapper}>
-			<div className={cls.inputs}>
-				<div className={cls.name}>
-					<p>Имя:</p> <input type="text" value={inputName} onChange={changeName} />
+			{isLoading ? (
+				<div className={cls.loader}>
+					{' '}
+					<Loader />{' '}
 				</div>
-				<div className={cls.password}>
-					<p>Сменить пароль</p>
-					<div>
-						<div className={cls.passPlace}>
-							Введи новый пароль:
-							<input
-								type={showPass ? 'text' : 'password'}
-								value={password}
-								onChange={e => setPassword(e.target.value)}
-								placeholder={'Не менее 5 символов'}
+			) : (
+				<>
+					<div className={cls.inputs}>
+						<div className={cls.name}>
+							<p>Имя:</p> <input type="text" value={inputName} onChange={changeName} />
+						</div>
+						<div className={cls.password}>
+							<p>Сменить пароль</p>
+							<div>
+								<div className={cls.passPlace}>
+									Введи новый пароль:
+									<input
+										type={showPass ? 'text' : 'password'}
+										value={password}
+										onChange={e => setPassword(e.target.value)}
+										placeholder={'Не менее 5 символов'}
+									/>
+									<img src={showPass ? eyeHide : eye} alt="eye" onClick={() => setShowPass(!showPass)} />
+								</div>
+								<div className={cls.passPlace}>
+									Подтверди пароль:
+									<input
+										type={showPass ? 'text' : 'password'}
+										value={confirm}
+										onChange={e => setConfirm(e.target.value)}
+										placeholder={'Не менее 5 символов'}
+									/>
+									<img src={showPass ? eyeHide : eye} alt="eye" onClick={() => setShowPass(!showPass)} />
+								</div>
+							</div>
+							<img src={info} alt="info" onClick={() => setShowWarning(true)} />
+							{showWarning && (
+								<p className={cls.warning}>
+									В некоторых моментах приложение использует и передаёт пароли в <br /> <span>открытом виде</span>.{' '}
+									<br /> В целях собственной же безопасности настоятельно рекомендую придумать и использовать для
+									авторизации <br /> <span>уникальный пароль</span>, <br /> который не подходит к другим, используемым
+									тобой сервисам! <br /> &nbsp; <br />{' '}
+									<span onClick={() => setShowWarning(false)}>Хорошо, я согласен</span>
+								</p>
+							)}
+						</div>
+						<div className={cls.avatar}>
+							<p>Аватарка:</p>{' '}
+							<textarea
+								type="text"
+								placeholder="Аватарка должна быть ссылкой на картинку, нормальный хостинг, куда можно заливать свои картинки, стоит денег. Пользуемся пока этим."
+								value={inputAvatar}
+								onChange={changeAvatar}
 							/>
-							<img src={showPass ? eyeHide : eye} alt="eye" onClick={() => setShowPass(!showPass)} />
-						</div>
-						<div className={cls.passPlace}>
-							Подтверди пароль:
-							<input type={showPass ? 'text' : 'password'} value={confirm} onChange={e => setConfirm(e.target.value)}
-							placeholder={'Не менее 5 символов'} />
-							<img src={showPass ? eyeHide : eye} alt="eye" onClick={() => setShowPass(!showPass)} />
 						</div>
 					</div>
-					<img src={info} alt="info" onClick={() => setShowWarning(true)} />
-					{showWarning && (
-						<p className={cls.warning}>
-							В некоторых моментах приложение использует и передаёт пароли в <br /> <span>открытом виде</span>. <br /> В
-							целях собственной же безопасности настоятельно рекомендую придумать и использовать для авторизации <br />{' '}
-							<span>уникальный пароль</span>, <br /> который не подходит к другим, используемым тобой сервисам! <br />{' '}
-							&nbsp; <br /> <span onClick={() => setShowWarning(false)}>Хорошо, я согласен</span>
-						</p>
-					)}
-				</div>
-				<div className={cls.avatar}>
-					<p>Аватарка:</p>{' '}
-					<textarea
-						type="text"
-						placeholder="Аватарка должна быть ссылкой на картинку, нормальный хостинг, куда можно заливать свои картинки, стоит денег. Пользуемся пока этим."
-						value={inputAvatar}
-						onChange={changeAvatar}
-					/>
-				</div>
-			</div>
-			<div className={cls.select}>
-				<div className={cls.group}>
-					<p>
-						Группа: <br />
-					</p>
-					<span>{group}</span>
-					<div>
-						<img className={cls.up} src={arrow} alt="arrow" onClick={inc} />
-						<img className={cls.down} src={arrow} alt="arrow" onClick={dec} />
+					<div className={cls.select}>
+						<div className={cls.group}>
+							<p>
+								Группа: <br />
+							</p>
+							<span>{group}</span>
+							<div>
+								<img className={cls.up} src={arrow} alt="arrow" onClick={inc} />
+								<img className={cls.down} src={arrow} alt="arrow" onClick={dec} />
+							</div>
+						</div>
+						<div className={cls.role} onClick={showRole}>
+							<p data-role={true}> Роль: {role}</p>
+							<ul className={showRoleList ? cls.hide : cls.show}>
+								{roles.map((el, i) => (
+									<li key={el.title} style={{ '--color': el.color }} onClick={() => selectRole(i)}>
+										{el.title}
+									</li>
+								))}
+								<li>
+									<img src={cross} alt="close" onClick={() => setShowRolelist(true)} />
+								</li>
+							</ul>
+						</div>
+						<div className={cls.characters} onClick={showClass}>
+							<div data-char={1} className={selectedChar === 1 ? cls.active : ''}>
+								Main: <span style={{ '--color': findColor(main) }}>{main}</span>
+							</div>
+							<div data-char={2} className={selectedChar === 2 ? cls.active : ''}>
+								1st twink: <span style={{ '--color': findColor(first) }}>{first}</span>
+							</div>
+							<div data-char={3} className={selectedChar === 3 ? cls.active : ''}>
+								2nd twink: <span style={{ '--color': findColor(second) }}>{second}</span>
+							</div>
+							<div data-char={4} className={selectedChar === 4 ? cls.active : ''}>
+								3rd twink: <span style={{ '--color': findColor(third) }}>{third}</span>
+							</div>
+							<ul className={showCharList ? cls.hide : cls.show}>
+								{classes.map((el, i) => (
+									<li key={el.title} style={{ '--color': el.color }} onClick={() => selectClass(i)}>
+										{el.title}
+									</li>
+								))}
+								<li>
+									<img src={cross} alt="close" onClick={hide} />
+								</li>
+							</ul>
+						</div>
 					</div>
-				</div>
-				<div className={cls.role} onClick={showRole}>
-					<p data-role={true}> Роль: {role}</p>
-					<ul className={showRoleList ? cls.hide : cls.show}>
-						{roles.map((el, i) => (
-							<li key={el.title} style={{ '--color': el.color }} onClick={() => selectRole(i)}>
-								{el.title}
-							</li>
-						))}
-						<li>
-							<img src={cross} alt="close" onClick={() => setShowRolelist(true)} />
-						</li>
-					</ul>
-				</div>
-				<div className={cls.characters} onClick={showClass}>
-					<div data-char={1} className={selectedChar === 1 ? cls.active : ''}>
-						Main: <span style={{'--color': findColor(main)}}>{main}</span>
-					</div>
-					<div data-char={2} className={selectedChar === 2 ? cls.active : ''}>
-						1st twink: <span style={{'--color': findColor(first)}}>{first}</span>
-					</div>
-					<div data-char={3} className={selectedChar === 3 ? cls.active : ''}>
-						2nd twink: <span style={{'--color': findColor(second)}}>{second}</span>
-					</div>
-					<div data-char={4} className={selectedChar === 4 ? cls.active : ''}>
-						3rd twink: <span style={{'--color': findColor(third)}}>{third}</span>
-					</div>
-					<ul className={showCharList ? cls.hide : cls.show}>
-						{classes.map((el, i) => (
-							<li key={el.title} style={{ '--color': el.color }} onClick={() => selectClass(i)}>
-								{el.title}
-							</li>
-						))}
-						<li>
-							<img src={cross} alt="close" onClick={hide} />
-						</li>
-					</ul>
-				</div>
-			</div>
-			<button
-				className={success ? cls.success : ''}
-				onClick={save}
-				disabled={showWarning || inputName?.length < 3 || password !== confirm}
-			>
-				{success ? '✓' : 'Сохранить'}
-			</button>
+					<button
+						className={success ? cls.success : ''}
+						onClick={save}
+						disabled={showWarning || inputName?.length < 3 || password !== confirm}
+					>
+						{success ? '✓' : 'Сохранить'}
+					</button>
+				</>
+			)}
 		</div>
 	)
 }

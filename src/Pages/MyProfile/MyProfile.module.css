@@ -357,3 +357,8 @@
 .up:hover {
 	transform: scale(1.2);
 }
+
+
+.loader {
+	padding-top: 30vmin;
+}

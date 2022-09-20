@@ -53,7 +53,6 @@
 
 .reset:hover p {
 	color: tomato;
-	font-weight: bold;
 }
 
 .date_range {
@@ -156,7 +155,6 @@
 	flex-direction: column;
 	row-gap: 2vmin;
 	padding: 4vmin;
-	/* z-index: 2; */
 	border-radius: 2vmax;
 	background: rgba(0, 0, 0, 0.75);
 }

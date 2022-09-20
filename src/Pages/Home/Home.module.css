@@ -22,8 +22,7 @@
 .search {
 	position: fixed;
 	top: 20vmin;
-	right: -35vmax;
-	width: 100%;
+	right: 7.5vmax;
 	display: flex;
 	padding-bottom: 45vmin;
 	flex-direction: column;
