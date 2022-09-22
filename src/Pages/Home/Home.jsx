@@ -19,8 +19,7 @@ const Home = () => {
 	const [showTitle, setShowTitle] = useState(false)
 	const [showLvl, setShowLvl] = useState(false)
 	const character = useRef()
-	const websocket = process.env.REACT_APP_API_URL.replace('https', 'ws') + 'ws'
-	const socket = useRef(new WebSocket(websocket))
+	const socket = useRef(new WebSocket(process.env.REACT_APP_WS_URL))
 
 	useEffect(() => {
 
