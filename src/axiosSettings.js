@@ -2,8 +2,9 @@ import ax from 'axios'
 
 const axios = () => {
 	const token = localStorage.getItem('token')
+	const http = process.env.REACT_APP_API_URL.replace('https', 'http')
 	return ax.create({
-		baseURL: process.env.REACT_APP_API_URL,
+		baseURL: http,
 		headers: { authorization: token },
 	})
 }
