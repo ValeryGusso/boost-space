@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { dungeonLvls, dungeonsTitles } from '../../assets/constants'
@@ -19,6 +19,21 @@ const Home = () => {
 	const [showTitle, setShowTitle] = useState(false)
 	const [showLvl, setShowLvl] = useState(false)
 	const character = useRef()
+	const ws = process.env.REACT_APP_API_URL.replace('https', '') + 'ws'
+	const socket = useRef(new WebSocket(ws))
+
+	useEffect(() => {
+
+		socket.current.onmessage = event => {
+			const parsed = JSON.parse(event.data)
+
+			if (parsed.updated) {
+				dispatch(fetchUsers())
+			}
+		}
+
+		return () => socket.current.close()
+	}, [])
 
 	function select(el) {
 		const prev = [...search]
@@ -41,17 +56,15 @@ const Home = () => {
 
 		if (ds.titleid === id) {
 			setShowTitle(true)
-			setTitlePosition({ x: event.clientX / vmax -1 + 'vmax', y: event.clientY / vmin - 17 + 'vmin' })
+			setTitlePosition({ x: x / vmax - 1 + 'vmax', y: y / vmin - 17 + 'vmin' })
 			character.current = ds.character
 		} else {
 			setShowTitle(false)
 		}
 
 		if (ds.lvlid === id) {
-			const vmin = window.innerHeight / 100
-			const vmax = window.innerWidth / 100
 			setShowLvl(true)
-			setLvlPosition({ x: event.clientX / vmax -1 + 'vmax', y: event.clientY / vmin - 29 + 'vmin' })
+			setLvlPosition({ x: x / vmax - 1 + 'vmax', y: y / vmin - 29 + 'vmin' })
 			character.current = ds.character
 		} else {
 			setShowLvl(false)
@@ -63,16 +76,16 @@ const Home = () => {
 
 		if (ds.key) {
 			const req = { [character.current]: { key: ds.key } }
-			const { data } = await axios().post('/user/keys', req)
-			console.log(data)
+			await axios().post('/user/keys', req)
 			dispatch(fetchUsers())
 		}
 		if (ds.lvl) {
 			const req = { [character.current]: { lvl: ds.lvl } }
-			const { data } = await axios().post('/user/keys', req)
-			console.log(data)
+			await axios().post('/user/keys', req)
 			dispatch(fetchUsers())
 		}
+
+		socket.current.send(JSON.stringify({ updated: true }))
 	}
 
 	return (

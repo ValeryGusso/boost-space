@@ -1,4 +1,5 @@
 .wrapper {
+	min-height: 95vmin;
 	position: relative;
 	padding-top: 20vmin;
 	padding-left: 5vmax;
