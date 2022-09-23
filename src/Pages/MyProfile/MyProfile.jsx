@@ -138,9 +138,11 @@ const MyProfile = () => {
 			const { data } = await axios().post('/user', { ...req })
 			if (data) {
 				setSuccess(true)
-				dispatch(fetchUsers())
-				const token = localStorage.getItem('token')
-				dispatch(fetchToken({ token }))
+				setTimeout(() => {
+					dispatch(fetchUsers())
+					const token = localStorage.getItem('token')
+					dispatch(fetchToken({ token }))
+				}, 5000)
 			}
 		}
 	}

@@ -48,7 +48,7 @@ const Payment = () => {
 				<ul>
 					{isLoaded ? (
 						data[selectedPeriod].data.map(el => {
-							return (
+							return (el.proceedsUSD + el.proceedsRUB > 0 &&
 								<li className={el.paid ? cls.paid : ''} key={el._id}>
 									<div className={isAdmin ? cls.isAdmin : ''}  onDoubleClick={() => isPaid(el.user._id)}>{el.user.name}</div>
 									<div>{el.proceedsUSD.toFixed(2)} $</div>

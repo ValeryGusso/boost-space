@@ -208,33 +208,35 @@ const MyOrders = () => {
 				)}
 			</div>
 			<div className={cls.content}>
-				<div className={cls.wrapper}>
-					<div className={cls.search}>
-						<div>Поиск по:</div>
-						<div className={cls.sortTitle} onClick={togleSort}>
-							{sortType.title}
-						</div>
-						<input type="text" disabled={!sortType.key} value={sortType.key ? search : ''} onChange={searching} />
-						{showSort && (
-							<div className={cls.searchList}>
-								<ul>
-									{types.map((el, i) => (
-										<li key={el.key} onClick={() => setSort(i)}>
-											{el.title}
-										</li>
-									))}
-								</ul>
+				{isLoaded && (
+					<div className={cls.wrapper}>
+						<div className={cls.search}>
+							<div>Поиск по:</div>
+							<div className={cls.sortTitle} onClick={togleSort}>
+								{sortType.title}
 							</div>
-						)}
+							<input type="text" disabled={!sortType.key} value={sortType.key ? search : ''} onChange={searching} />
+							{showSort && (
+								<div className={cls.searchList}>
+									<ul>
+										{types.map((el, i) => (
+											<li key={el.key} onClick={() => setSort(i)}>
+												{el.title}
+											</li>
+										))}
+									</ul>
+								</div>
+							)}
+						</div>
+						<div className={cls.title}>
+							<p>Дата</p>
+							<p>Тип</p>
+							<p>Группа</p>
+							<p>Цена / Моя доля</p>
+							<p>Описание</p>
+						</div>
 					</div>
-					<div className={cls.title}>
-						<p>Дата</p>
-						<p>Тип</p>
-						<p>Группа</p>
-						<p>Цена / Моя доля</p>
-						<p>Описание</p>
-					</div>
-				</div>
+				)}
 				<div className={cls.container}>
 					{isLoaded ? (
 						(search || (startDate && endDate) ? renderList : orders).map(el => (
