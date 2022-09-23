@@ -16,9 +16,17 @@ textarea {
 	color: #112434;
 }
 
-*::-webkit-scrollbar {
-	visibility: hidden;
-	width: 0;
+::-webkit-scrollbar {
+	width: 0.75vmax;
+}
+
+::-webkit-scrollbar-track {
+	background: #333536;
+}
+::-webkit-scrollbar-thumb {
+	background: darkgray;
+	border-radius: 1vmin;
+	cursor: pointer;
 }
 
 body {

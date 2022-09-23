@@ -88,12 +88,10 @@
 }
 
 .content {
-	position: absolute;
-	top: 0;
-	left: 30vmax;
 	width: 100%;
-	padding-bottom: 5vmin;
 	margin-top: 20vmin;
+	padding-bottom: 5vmin;
+	padding-left: 30vmax;
 	display: flex;
 	flex-direction: column;
 	row-gap: 1vmin;

@@ -4,6 +4,7 @@ const axios = () => {
 	const token = localStorage.getItem('token')
 	return ax.create({
 		baseURL: process.env.REACT_APP_API_URL,
+		// baseURL: 'http://localhost:666',
 		headers: { authorization: token },
 	})
 }

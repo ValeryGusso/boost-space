@@ -12,6 +12,7 @@ import eyeHide from '../../assets/img/hide.svg'
 import { useEffect } from 'react'
 import { fetchUsers } from '../../Redux/slices/users'
 import Loader from '../../Components/Loader/Loader'
+import { fetchToken } from '../../Redux/slices/auth'
 
 const MyProfile = () => {
 	const dispatch = useDispatch()
@@ -138,6 +139,8 @@ const MyProfile = () => {
 			if (data) {
 				setSuccess(true)
 				dispatch(fetchUsers())
+				const token = localStorage.getItem('token')
+				dispatch(fetchToken({ token }))
 			}
 		}
 	}

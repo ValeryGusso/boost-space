@@ -13,6 +13,7 @@ const Header = () => {
 	const location = useLocation()
 	const [activePage, setActivePage] = useState(0)
 	const me = useSelector(state => state.users.me)
+	const avatar = useSelector(state => state.auth.avatar)
 	const menuList = [
 		{ title: 'Главная', link: '/home' },
 		{ title: 'Админка', link: '/admin' },
@@ -58,9 +59,8 @@ const Header = () => {
 			</div>
 			<div className={cls.profile}>
 				<div className={cls.avatar}>
-					<img src={me?.avatar || defaultAvatar} alt="avatar" />
+					<img src={avatar || defaultAvatar} alt="avatar" />
 				</div>
-				{/* <button onClick={clickLogout}>Выйти</button> */}
 				<img src={exit} alt="logout" onClick={clickLogout} title="Выйти" />
 			</div>
 		</div>

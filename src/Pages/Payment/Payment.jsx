@@ -51,8 +51,8 @@ const Payment = () => {
 							return (
 								<li className={el.paid ? cls.paid : ''} key={el._id}>
 									<div className={isAdmin ? cls.isAdmin : ''}  onDoubleClick={() => isPaid(el.user._id)}>{el.user.name}</div>
-									<div>{el.proceedsUSD} $</div>
-									<div>{el.proceedsRUB} ₽</div>
+									<div>{el.proceedsUSD.toFixed(2)} $</div>
+									<div>{el.proceedsRUB.toFixed(2)} ₽</div>
 								</li>
 							)
 						})
@@ -64,12 +64,12 @@ const Payment = () => {
 					{isLoaded && (
 						<>
 							<li>
-								<div>Орг. сбор: </div> <div>{data[selectedPeriod].tax.valueUSD} $</div>
-								<div>{data[1].tax.valueRUB} ₽</div>
+								<div>Орг. сбор: </div> <div>{data[selectedPeriod].tax.valueUSD.toFixed(2)} $</div>
+								<div>{data[1].tax.valueRUB.toFixed(2)} ₽</div>
 							</li>
 							<li>
-								<div>Общая сумма выплат: </div> <div>{data[selectedPeriod].orders.summUSD} $</div>
-								<div>{data[1].orders.summRUB} ₽</div>
+								<div>Общая сумма выплат: </div> <div>{data[selectedPeriod].orders.summUSD.toFixed(2)} $</div>
+								<div>{data[1].orders.summRUB.toFixed(2)} ₽</div>
 							</li>
 						</>
 					)}

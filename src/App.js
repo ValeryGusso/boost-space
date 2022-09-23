@@ -14,7 +14,6 @@ import Payment from './Pages/Payment/Payment'
 import Registration from './Pages/Registration/Registration'
 import Welcome from './Pages/Welcome/Welcome'
 import { fetchToken } from './Redux/slices/auth'
-import { fetchUsers } from './Redux/slices/users'
 
 function App() {
 	const navigate = useNavigate()
@@ -26,7 +25,6 @@ function App() {
 
 		if (token) {
 			dispatch(fetchToken({ token }))
-			dispatch(fetchUsers())
 			isAuth ?? navigate('/home')
 		} else {
 			navigate('/welcome')

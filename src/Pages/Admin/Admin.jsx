@@ -10,12 +10,13 @@ import edit from '../../assets/img/edit.svg'
 import { useEffect } from 'react'
 import { fetchOrders } from '../../Redux/slices/orders'
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Confirm from '../../Components/Confirm/Confirm'
 
 const confirmText = 'Ты действительно уверен, что хочешь удалить заказ? Это действие невозможно отменить.'
 
 const Admin = () => {
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [counter, setCounter] = useState()
 	const [invite, setInvite] = useState('')
@@ -23,6 +24,7 @@ const Admin = () => {
 	const [showConfirm, setShowConfirm] = useState(false)
 	const [group, setGroup] = useState(0)
 	const { items: orders, isLoaded } = useSelector(state => state.orders)
+	const isAdmin = useSelector(state => state.auth.isAdmin)
 	const int = useRef()
 	const confirmProps = useRef()
 
@@ -70,6 +72,10 @@ const Admin = () => {
 		const cbYes = async id => await axios().delete('/orders/' + id)
 		confirmProps.current = { id, children, callbackNo: cbNo, callbackYes: cbYes }
 		console.log(confirmProps.current)
+	}
+
+	if (!isAdmin) {
+		navigate('/home')
 	}
 
 	return (

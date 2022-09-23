@@ -1,10 +1,8 @@
 .wrapper {
 	min-height: 95vmin;
-	/* padding-bottom: 5vmin; */
 	display: flex;
 	flex-direction: column;
 	padding-left: 8vmax;
-	overflow-y: scroll;
 }
 
 .field > div > input {

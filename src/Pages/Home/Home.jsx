@@ -20,9 +20,10 @@ const Home = () => {
 	const [showLvl, setShowLvl] = useState(false)
 	const character = useRef()
 	const socket = useRef(new WebSocket(process.env.REACT_APP_WS_URL))
+	// const socket = useRef(new WebSocket('ws://localhost:666/ws'))
 
 	useEffect(() => {
-
+		dispatch(fetchUsers())
 		socket.current.onmessage = event => {
 			const parsed = JSON.parse(event.data)
 

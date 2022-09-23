@@ -48,7 +48,7 @@ const GroupModule = ({ characters, title, search }) => {
 							id === el.id && el.data.class ? cls.my : '',
 							search.includes(el.data.key) ? cls.searched : ''
 						)}
-						data-titleid={el.id}
+						data-titleid={el.data.class ? el.id : ''}
 						data-character={titles[title].key}
 						key={el.id}
 					>
@@ -65,7 +65,7 @@ const GroupModule = ({ characters, title, search }) => {
 							id === el.id && el.data.class ? cls.my : '',
 							search.includes(el.data.key) ? cls.searched : ''
 						)}
-						data-lvlid={el.id}
+						data-lvlid={el.data.class ? el.id : ''}
 						data-character={titles[title].key}
 						key={el.id}
 					>

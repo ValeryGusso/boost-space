@@ -7,8 +7,8 @@ const Row = ({ date, type, group, price, tax, currency, description, orderLink, 
 	return (
 		<div className={cls.container}>
 			<div type="date">
-				<p>{`${parse.getDate() > 10 ? parse.getDate() : '0' + parse.getDate()}.${
-					parse.getMonth() + 1 > 10 ? parse.getMonth() + 1 : '0' + (parse.getMonth() + 1)
+				<p>{`${parse.getDate() >= 10 ? parse.getDate() : '0' + parse.getDate()}.${
+					parse.getMonth() + 1 >= 10 ? parse.getMonth() + 1 : '0' + (parse.getMonth() + 1)
 				}.${parse.getFullYear().toString().substring(2, 4)}`}</p>
 			</div>
 			<div className={orderLink ? cls.link : ''}>

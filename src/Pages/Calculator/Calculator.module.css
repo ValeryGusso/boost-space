@@ -1,4 +1,5 @@
 .wrapper {
+	position: relative;
 	width: 100%;
 	min-height: 90vmin;
 	padding-top: 16vmin;
@@ -8,16 +9,33 @@
 }
 
 .period {
-	position: relative;
 	width: 50vmax;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-rows: 10vmin 1fr;
+	justify-items: start;
+	align-self: center;
 	row-gap: 3vmin;
 }
 
+.orders {
+	position: absolute;
+	top: 25vmin;
+	left: -4.5vmax;
+	width: 100%;
+	height: calc(100% - 10vmin);
+	display: flex;
+	flex-direction: column;
+	row-gap: 3px;
+	transform: scale(0.9)
+}
+
 .header {
+	position: absolute;
+	top: 20vmin;
+	left: -20vmax;
 	width: 100%;
 	padding: 2vmin;
+	padding-right: 10vmax;
 	display: flex;
 	justify-content: center;
 	align-content: center;
@@ -53,7 +71,7 @@
 .period input:focus,
 .focus,
 .header button:hover {
-	background: rgba(255, 255, 255, 0.85)!important;
+	background: rgba(255, 255, 255, 0.85) !important;
 	outline: none;
 	box-shadow: 0.75vmin -1vmin 3px rgba(0, 0, 0, 0.5);
 }
@@ -69,7 +87,7 @@
 
 .date_range img {
 	transform: rotateZ(90deg) scale(1.5);
-	filter: invert(0.75)
+	filter: invert(0.75);
 }
 
 .select {
@@ -102,16 +120,6 @@
 .select ul li:hover {
 	border: 1px solid #c9c7c3;
 	transform: translateX(1vmax);
-}
-
-.orders {
-	position: absolute;
-	top: 8vmin;
-	left: -5.5vmax;
-	display: flex;
-	flex-direction: column;
-	row-gap: 3px;
-	transform: scale(0.8);
 }
 
 .loader {
@@ -158,7 +166,7 @@
 	align-self: center;
 	margin-top: 3vmin;
 	width: 15vmax;
-	min-height: 7vmin!important;
+	min-height: 7vmin !important;
 	border: none;
 	border-radius: 2vmin;
 	font-size: 3vmin;
@@ -202,7 +210,7 @@
 	transition: 1s;
 	font-weight: bold;
 	font-style: italic;
-  letter-spacing: 0.1vmax;
+	letter-spacing: 0.1vmax;
 }
 
 .successShow {
