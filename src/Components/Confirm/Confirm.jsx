@@ -4,7 +4,6 @@ import cls from './Confirm.module.css'
 
 const Confirm = ({ text, callbackNo, callbackYes, children, id, type, request }) => {
 	const dispatch = useDispatch()
-	console.log(children)
 
 	function clickYes() {
 		if (type === 'admin') {

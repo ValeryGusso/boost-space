@@ -17,7 +17,14 @@ const initialState = {
 const usersSlice = createSlice({
 	name: 'users',
 	initialState,
-	reducers: {},
+	reducers: {
+		update(state, action) {
+			state.users = action.payload.users
+			state.data = action.payload.data
+			state.groupCounter = action.payload.groupCounter
+			state.me = action.payload.me
+		}
+	},
 	extraReducers: {
 		[fetchUsers.pending]: state => {
 			state.users = []
@@ -43,5 +50,5 @@ const usersSlice = createSlice({
 	},
 })
 
-// export const {} = usersSlice.actions
+export const { update } = usersSlice.actions
 export const usersReducer = usersSlice.reducer

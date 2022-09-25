@@ -1,6 +1,7 @@
 .header {
 	user-select: none;
-	width: 100%;
+	width: 99.25vmax;
+	margin-right: 0.75vmax;
 	height: 10vmin;
 	position: fixed;
 	top: 0;
@@ -66,7 +67,7 @@
 }
 
 .avatar img {
-	width: 10vmin;
+	width: 8vmin;
 	border-radius: 50%;
 }
 
@@ -75,7 +76,7 @@
 }
 
 .profile > img {
-	width: 9vmin;
+	width: 8vmin;
 	padding-top: 1vmin;
 	cursor: pointer;
 	box-sizing: border-box;

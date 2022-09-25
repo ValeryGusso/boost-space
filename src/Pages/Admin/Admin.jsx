@@ -71,11 +71,10 @@ const Admin = () => {
 		const cbNo = () => setShowConfirm(false)
 		const cbYes = async id => await axios().delete('/orders/' + id)
 		confirmProps.current = { id, children, callbackNo: cbNo, callbackYes: cbYes }
-		console.log(confirmProps.current)
 	}
 
 	if (!isAdmin) {
-		navigate('/home')
+		return navigate('/home')
 	}
 
 	return (

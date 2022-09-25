@@ -59,7 +59,8 @@
 .searched {
 	transform: scale(1.1);	
 	color: #112434;
-	background: #77A1D3
+	background: var(--c)
+	/* background: #77A1D3 */
 }
 
 .nonsearched {
@@ -79,7 +80,7 @@
 	padding: 3vmin 2vmin 2vmin 3.5vmin;
 	background: rgba(0, 0, 0, 0.8);
 	border-radius: 2vmax;
-	z-index: 11;
+	z-index: 20;
 	transition: 1s;
 }
 
@@ -118,7 +119,7 @@
 	padding: 3vmin 2vmin 2vmin 3.5vmin;
 	background: rgba(0, 0, 0, 0.8);
 	border-radius: 2vmax;
-	z-index: 11;
+	z-index: 20;
 	transition: 1s;
 }
 

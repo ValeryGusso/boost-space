@@ -10,7 +10,7 @@ import info from '../../assets/img/info.svg'
 import eye from '../../assets/img/eye.svg'
 import eyeHide from '../../assets/img/hide.svg'
 import { useEffect } from 'react'
-import { fetchUsers } from '../../Redux/slices/users'
+import { fetchUsers, update } from '../../Redux/slices/users'
 import Loader from '../../Components/Loader/Loader'
 import { fetchToken } from '../../Redux/slices/auth'
 
@@ -122,6 +122,11 @@ const MyProfile = () => {
 		setInputAvatar(event.target.value)
 	}
 
+	async function getInfo() {
+		const { data } = await axios().get('/users')
+		dispatch(update({ ...data }))
+	}
+
 	async function save() {
 		if (!success) {
 			const req = {
@@ -136,13 +141,9 @@ const MyProfile = () => {
 				third,
 			}
 			const { data } = await axios().post('/user', { ...req })
-			if (data) {
+			if (data.success) {
 				setSuccess(true)
-				setTimeout(() => {
-					dispatch(fetchUsers())
-					const token = localStorage.getItem('token')
-					dispatch(fetchToken({ token }))
-				}, 5000)
+				getInfo()
 			}
 		}
 	}

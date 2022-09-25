@@ -2,11 +2,11 @@ import classNames from 'classnames'
 import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { dungeonLvls, dungeonsTitles } from '../../assets/constants'
+import { colors, dungeonLvls, dungeonsTitles } from '../../assets/constants'
 import axios from '../../axiosSettings'
 import Group from '../../Components/Group/Group'
 import Loader from '../../Components/Loader/Loader'
-import { fetchUsers } from '../../Redux/slices/users'
+import { fetchUsers, update } from '../../Redux/slices/users'
 import cls from './Home.module.css'
 
 const Home = () => {
@@ -19,20 +19,41 @@ const Home = () => {
 	const [showTitle, setShowTitle] = useState(false)
 	const [showLvl, setShowLvl] = useState(false)
 	const character = useRef()
-	const socket = useRef(new WebSocket(process.env.REACT_APP_WS_URL))
-	// const socket = useRef(new WebSocket('ws://localhost:666/ws'))
+	const socket = useRef('')
+
+	async function getInfo() {
+		const { data } = await axios().get('/users')
+		dispatch(update({ ...data }))
+	}
+
+	function setColor(title) {
+		const colorsTable = []
+		search.map((el, i) => colorsTable.push({ title: el, color: colors[i] }))
+		if (colorsTable.length > 0) {
+			for (let i = 0; i < colorsTable.length; i++) {
+				if (colorsTable[i].title === title) {
+					return colorsTable[i].color
+				}
+			}
+		}
+	}
 
 	useEffect(() => {
 		dispatch(fetchUsers())
+		socket.current = new WebSocket(process.env.REACT_APP_WS_URL)
+		// socket.current = new WebSocket('ws://localhost:666/ws')
 		socket.current.onmessage = event => {
 			const parsed = JSON.parse(event.data)
 
 			if (parsed.updated) {
-				dispatch(fetchUsers())
+				getInfo()
 			}
 		}
 
-		return () => socket.current.close()
+		return () => {
+			socket.current.close()
+			socket.current = null
+		}
 	}, [])
 
 	function select(el) {
@@ -56,7 +77,7 @@ const Home = () => {
 
 		if (ds.titleid === id) {
 			setShowTitle(true)
-			setTitlePosition({ x: x / vmax - 1 + 'vmax', y: y / vmin - 17 + 'vmin' })
+			setTitlePosition({ x: x / vmax - 1 + 'vmax', y: y / vmin - 12 + 'vmin' })
 			character.current = ds.character
 		} else {
 			setShowTitle(false)
@@ -64,7 +85,7 @@ const Home = () => {
 
 		if (ds.lvlid === id) {
 			setShowLvl(true)
-			setLvlPosition({ x: x / vmax - 1 + 'vmax', y: y / vmin - 29 + 'vmin' })
+			setLvlPosition({ x: x / vmax - 1 + 'vmax', y: y / vmin - 20 + 'vmin' })
 			character.current = ds.character
 		} else {
 			setShowLvl(false)
@@ -76,13 +97,13 @@ const Home = () => {
 
 		if (ds.key) {
 			const req = { [character.current]: { key: ds.key } }
-			await axios().post('/user/keys', req)
-			dispatch(fetchUsers())
+			const { data } = await axios().post('/user/keys', req)
+			dispatch(update({ ...data }))
 		}
 		if (ds.lvl) {
 			const req = { [character.current]: { lvl: ds.lvl } }
-			await axios().post('/user/keys', req)
-			dispatch(fetchUsers())
+			const { data } = await axios().post('/user/keys', req)
+			dispatch(update({ ...data }))
 		}
 
 		socket.current.send(JSON.stringify({ updated: true }))
@@ -118,6 +139,7 @@ const Home = () => {
 						return (
 							el !== '---' && (
 								<li
+									style={{ '--c': setColor(el) }}
 									key={el}
 									className={search.includes(el) ? cls.searched : cls.nonsearched}
 									onClick={() => select(el)}

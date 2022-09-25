@@ -95,8 +95,8 @@
 	display: flex;
 	flex-direction: column;
 	row-gap: 1vmin;
-	justify-content: center;
-	align-content: center;
+	/* justify-content: center;
+	align-content: center; */
 }
 
 .wrapper {

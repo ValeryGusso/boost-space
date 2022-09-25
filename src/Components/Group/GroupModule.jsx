@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { useSelector } from 'react-redux'
-import { classes, dungeonsTitles } from '../../assets/constants'
+import { classes, colors, dungeonsTitles } from '../../assets/constants'
 import cls from './GroupModule.module.css'
 
 const titles = [
@@ -12,6 +12,18 @@ const titles = [
 
 const GroupModule = ({ characters, title, search }) => {
 	const id = useSelector(state => state.auth.id)
+
+	function setColor(title) {
+		const colorsTable = []
+		search.map((el, i) => colorsTable.push({ title: el, color: colors[i] }))
+		if (colorsTable.length > 0) {
+			for (let i = 0; i < colorsTable.length; i++) {
+				if (colorsTable[i].title === title) {
+					return colorsTable[i].color
+				}
+			}
+		}
+	}
 
 	function findCollor(name) {
 		for (let i = 0; i < classes.length; i++) {
@@ -35,7 +47,9 @@ const GroupModule = ({ characters, title, search }) => {
 							search.includes(el.data.key) ? cls.searched : '',
 							search.length === 0 && el.data.class ? cls.colored : ''
 						)}
-						style={{ '--color': findCollor(el.data.class) }}
+						style={
+							search.length === 0 ? { '--color': findCollor(el.data.class) } : { '--c': setColor(el.data.key) }
+						}
 					>
 						{el.data.class || '---'}
 					</div>
@@ -44,6 +58,7 @@ const GroupModule = ({ characters, title, search }) => {
 			<div className={cls.key}>
 				{characters.map(el => (
 					<div
+						style={{ '--c': setColor(el.data.key) }}
 						className={classNames(
 							id === el.id && el.data.class ? cls.my : '',
 							search.includes(el.data.key) ? cls.searched : ''
@@ -61,6 +76,7 @@ const GroupModule = ({ characters, title, search }) => {
 			<div className={cls.lvl}>
 				{characters.map(el => (
 					<div
+						style={{ '--c': setColor(el.data.key) }}
 						className={classNames(
 							id === el.id && el.data.class ? cls.my : '',
 							search.includes(el.data.key) ? cls.searched : ''

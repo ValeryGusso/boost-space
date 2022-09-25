@@ -12,7 +12,7 @@ const Header = () => {
 	const navigate = useNavigate()
 	const location = useLocation()
 	const [activePage, setActivePage] = useState(0)
-	const me = useSelector(state => state.users.me)
+	const { name, isAdmin } = useSelector(state => state.auth)
 	const avatar = useSelector(state => state.auth.avatar)
 	const menuList = [
 		{ title: 'Главная', link: '/home' },
@@ -21,7 +21,7 @@ const Header = () => {
 		{ title: 'Калькулятор', link: '/calculator' },
 		{ title: 'Выплаты', link: '/payment' },
 		{ title: 'Мои заказы', link: '/orders' },
-		{ title: me?.name, link: '/profile' },
+		{ title: name, link: '/profile' },
 	]
 
 	useEffect(() => {
@@ -47,9 +47,12 @@ const Header = () => {
 			<div className={cls.menu}>
 				<ul>
 					{menuList.map((el, i) => {
-						return !((i === 1 || i === 2 || i === 3) && !me?.isAdmin) ? (
+						return !((i === 1 || i === 2 || i === 3) && !isAdmin) ? (
 							<li key={i} onClick={() => menuClick(i)} className={activePage === i ? cls.active : ''}>
-								<Link to={el.link} data-text={el.title}> {el.title}</Link>
+								<Link to={el.link} data-text={el.title}>
+									{' '}
+									{el.title}
+								</Link>
 							</li>
 						) : (
 							''

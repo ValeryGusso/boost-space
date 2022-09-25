@@ -8,12 +8,14 @@ import classNames from 'classnames'
 import { ru } from 'date-fns/locale'
 import { DatePicker } from 'react-nice-dates'
 import axios from '../../axiosSettings'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { useRef } from 'react'
 
 const AddOrder = () => {
+	const navigate = useNavigate()
 	const params = useParams()
 	const users = useSelector(state => state.users.users)
+	const isAdmin = useSelector(state => state.auth.isAdmin)
 	const [showList, setShowList] = useState(false)
 	const [showGroup, setShowGroup] = useState(false)
 	const [date, setDate] = useState(new Date())
@@ -166,6 +168,10 @@ const AddOrder = () => {
 			setShowSuccess(true)
 			successParams.current = {collor: '#EF3B36', text: 'Ошибка'}
 		}
+	}
+
+	if (!isAdmin) {
+		return navigate('/home')
 	}
 
 	return (

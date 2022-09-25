@@ -21,3 +21,5 @@ export const roles = [
 export const dungeonsTitles = ['---', 'GD', 'ID', 'RtKL', 'RtKU', 'JY', 'WS', 'STR', 'SG']
 
 export const dungeonLvls = ['---', '< 15', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '> 25']
+
+export const colors = ['#77A1D3', '#F2994A', '#bdc3c7', '#16A085', '#f64f59', '#c471ed',  '#EFEFBB', '#94716B']

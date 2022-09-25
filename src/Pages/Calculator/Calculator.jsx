@@ -11,10 +11,12 @@ import axios from '../../axiosSettings'
 import { fetchPeriods } from '../../Redux/slices/periods'
 import classNames from 'classnames'
 import Confirm from '../../Components/Confirm/Confirm'
+import { useNavigate } from 'react-router'
 
 const confirmText = 'Ты действительно уверен, что хочешь создать период? Это действие невозможно отменить.'
 
 const Calculator = () => {
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [startDate, setStartDate] = useState()
 	const [endDate, setEndDate] = useState()
@@ -24,6 +26,7 @@ const Calculator = () => {
 	const [renderList, setRenderList] = useState([])
 	const [isLoaded, setIsLoaded] = useState(false)
 	const users = useSelector(state => state.users.users)
+	const isAdmin = useSelector(state => state.auth.isAdmin)
 	const { data: periods } = useSelector(state => state.periods)
 	const [selectedPeriod, setSelectedPeriod] = useState()
 	const [text, setText] = useState('Выбор периода')
@@ -170,6 +173,10 @@ const Calculator = () => {
 	useEffect(() => {
 		dispatch(fetchPeriods())
 	}, [])
+
+	if (!isAdmin) {
+		return navigate('/home')
+	}
 
 	return (
 		<div className={cls.wrapper}>
