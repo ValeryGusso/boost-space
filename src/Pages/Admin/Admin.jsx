@@ -104,7 +104,7 @@ const Admin = () => {
 			</div>
 			<div className={cls.orders}>
 				{isLoaded ? (
-					orders.map(el => (
+					[...orders].reverse().map(el => (
 						<div key={el._id + 'sfsdf'} className={cls.content}>
 							<div key={el._id + 'dffffax'} className={cls.row}>
 								<Row

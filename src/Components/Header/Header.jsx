@@ -48,8 +48,8 @@ const Header = () => {
 				<ul>
 					{menuList.map((el, i) => {
 						return !((i === 1 || i === 2 || i === 3) && !isAdmin) ? (
-							<li key={i} onClick={() => menuClick(i)} className={activePage === i ? cls.active : ''}>
-								<Link to={el.link} data-text={el.title}>
+							<li key={i} className={activePage === i ? cls.active : ''}>
+								<Link to={el.link} data-text={el.title} onClick={() => menuClick(i)}>
 									{' '}
 									{el.title}
 								</Link>

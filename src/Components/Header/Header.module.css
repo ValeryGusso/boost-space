@@ -27,7 +27,6 @@
 .menu ul li {
 	padding-top: 2vmin;
 	font-size: 3.5vmin;
-	cursor: pointer;
 	transition: 0.3s;
 }
 

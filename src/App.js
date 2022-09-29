@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes, useNavigate } from 'react-router'
 import Footer from './Components/Footer/Footer'
 import Header from './Components/Header/Header'
+import AuthMenu from './Components/AuthMenu/AuthMenu'
 import AddOrder from './Pages/AddOrder/AddOrder'
 import Admin from './Pages/Admin/Admin'
 import Calculator from './Pages/Calculator/Calculator'
@@ -33,7 +34,7 @@ function App() {
 
 	return (
 		<div className="App" data-body={true}>
-			{isAuth && <Header />}
+			{isAuth ? <Header /> : <AuthMenu />}
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/home" element={<Home />} />

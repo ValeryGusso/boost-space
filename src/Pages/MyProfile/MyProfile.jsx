@@ -118,10 +118,6 @@ const MyProfile = () => {
 		}
 	}
 
-	function changeAvatar(event) {
-		setInputAvatar(event.target.value)
-	}
-
 	async function getInfo() {
 		const { data } = await axios().get('/users')
 		dispatch(update({ ...data }))
@@ -214,7 +210,7 @@ const MyProfile = () => {
 								type="text"
 								placeholder="Аватарка должна быть ссылкой на картинку, нормальный хостинг, куда можно заливать свои картинки, стоит денег. Пользуемся пока этим."
 								value={inputAvatar}
-								onChange={changeAvatar}
+								onChange={e => setInputAvatar(e.target.value)}
 							/>
 						</div>
 					</div>

@@ -73,7 +73,6 @@ const AddOrder = () => {
 		if (showSuccess) {
 			setShowSuccess(false)
 		}
-
 	}, [price, group, type, date, currency, tax, description, orderLink, priceLink])
 
 	function changeType(event) {
@@ -81,7 +80,9 @@ const AddOrder = () => {
 	}
 
 	function changePrice(event) {
-		setPrice(event.target.value)
+		if (event.target.value >= 0) {
+			setPrice(event.target.value)
+		}
 	}
 
 	function togle() {
@@ -158,15 +159,15 @@ const AddOrder = () => {
 			if (params.id) {
 				await axios().patch('/orders/' + params.id, { ...req })
 				setShowSuccess(true)
-				successParams.current = {collor: '#348f50', text: 'Заказ успешно изменён'}
+				successParams.current = { collor: '#348f50', text: 'Заказ успешно изменён' }
 			} else {
 				await axios().post('/orders', { ...req })
 				setShowSuccess(true)
-				successParams.current = {collor: '#348f50', text: 'Заказ успешно создан'}
+				successParams.current = { collor: '#348f50', text: 'Заказ успешно создан' }
 			}
 		} else {
 			setShowSuccess(true)
-			successParams.current = {collor: '#EF3B36', text: 'Ошибка'}
+			successParams.current = { collor: '#EF3B36', text: 'Ошибка' }
 		}
 	}
 
@@ -248,7 +249,10 @@ const AddOrder = () => {
 						{params.id ? 'Редактировать' : 'Сохранить'}
 					</button>
 					{showSuccess && (
-						<p className={classNames(cls.success, showSuccess ? cls.successShow : '')} style={{ '--color': successParams.current.collor }}>
+						<p
+							className={classNames(cls.success, showSuccess ? cls.successShow : '')}
+							style={{ '--color': successParams.current.collor }}
+						>
 							{successParams.current.text}
 						</p>
 					)}
