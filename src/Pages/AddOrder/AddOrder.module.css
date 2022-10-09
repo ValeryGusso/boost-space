@@ -88,6 +88,11 @@
 	cursor: pointer;
 }
 
+.activegroup {
+	background: rgba(255, 255, 255, 0.85)!important;
+	filter: drop-shadow(1vmin 1vmin 5px rgba(0, 0, 0, 0.85))!important;
+}
+
 .groupplace ul {
 	width: 100%;
 	display: flex;
@@ -125,7 +130,7 @@
 	background: rgba(255, 255, 255, 0.2);
 	padding: 1vmin;
 	border-radius: 1vmin;
-	transition: 1s;
+	transition: 0.5s;
 }
 
 .grouplist li:hover {

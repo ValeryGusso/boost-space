@@ -102,7 +102,7 @@ const AddOrder = () => {
 	function changeTax(event) {
 		const val = event.target.value
 
-		if (val > 0) {
+		if (val >= 0) {
 			setTax(val)
 		}
 	}
@@ -193,7 +193,7 @@ const AddOrder = () => {
 						<img className={cls.close} src={cross} alt="close" title="Закрыть список" onClick={hideGroup} />
 					)}
 					<p>Группа</p>
-					<div className={cls.groupplace} onClick={selectGroup}>
+					<div className={classNames(cls.groupplace, showGroup ? cls.activegroup : '')} onClick={selectGroup}>
 						<ul>
 							{group.map((el, i) => (
 								<li key={el.id + i} onClick={() => spliceGroup(i)}>
@@ -225,7 +225,7 @@ const AddOrder = () => {
 				</div>
 				<div className={cls.currency}>
 					<p>Валюта</p>
-					<div onClick={togle}>{currency}</div>
+					<div onClick={togle} className={showList ? cls.activegroup : ''}>{currency}</div>
 					<ul className={classNames(cls.setcurrency, showList ? cls.show : cls.hide)}>
 						<li onClick={setUsd}>
 							<img src={dollar} alt="" />
