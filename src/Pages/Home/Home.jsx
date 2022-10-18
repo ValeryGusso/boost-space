@@ -132,7 +132,7 @@ const Home = () => {
 					</div>
 				)}
 			</div>
-			<div className={cls.search}>
+			{ !isLoading && <div className={cls.search}>
 				<p>Поиск ключей: </p>
 				<ul>
 					{dungeonsTitles.map(el => {
@@ -150,7 +150,7 @@ const Home = () => {
 						)
 					})}
 				</ul>
-			</div>
+			</div> }
 			<div
 				className={classNames(cls.titleSelect, showTitle ? cls.show : cls.hide)}
 				style={{ '--titlex': titlePosition.x, '--titley': titlePosition.y }}
