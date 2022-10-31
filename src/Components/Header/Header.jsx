@@ -17,6 +17,7 @@ const Header = () => {
 	const menuList = [
 		{ title: 'Главная', link: '/home' },
 		{ title: 'Админка', link: '/admin' },
+		{ title: 'Состав', link: '/roster' },
 		{ title: 'Добавить заказ', link: '/add-order' },
 		{ title: 'Калькулятор', link: '/calculator' },
 		{ title: 'Выплаты', link: '/payment' },
@@ -47,7 +48,7 @@ const Header = () => {
 			<div className={cls.menu}>
 				<ul>
 					{menuList.map((el, i) => {
-						return !((i === 1 || i === 2 || i === 3) && !isAdmin) ? (
+						return !((i === 1 || i === 2 || i === 3 || i === 4) && !isAdmin) ? (
 							<li key={i} className={activePage === i ? cls.active : ''}>
 								<Link to={el.link} data-text={el.title} onClick={() => menuClick(i)}>
 									{' '}

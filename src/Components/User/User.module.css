@@ -1,0 +1,72 @@
+.user {
+	width: 35vmax;
+  height: 7vmin;
+	display: grid;
+	grid-template-columns: 15vmax 10vmax 10vmax;
+	justify-items: center;
+	align-items: center;
+	font-size: 3vmin;
+	/* background: darkolivegreen	 */
+}
+
+.user > div {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	height: 100%;
+	border-radius: 2vmax;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	transition: 1s;
+}
+
+.user > div img {
+	position: absolute;
+	filter: invert(0.75);
+	cursor: pointer;
+	transition: 1s;
+}
+
+.group {
+	font-size: 4vmin;
+	padding-right: 1vmax;
+}
+
+.greenbg {
+	background: rgba(201, 255, 153, 0.5) !important;
+  color: #112434;
+  cursor: pointer;
+}
+
+.active {
+	background: rgba(255, 153, 190, 0.5);
+	color: #112434;
+	transition: 0.5;
+	cursor: pointer;
+}
+
+.active:hover {
+	transform: translateX(1vmax);
+}
+
+.up {
+	top: 0.25vmin;
+	left: 5.5vmax;
+}
+
+.down {
+	top: 3vmin;
+	left: 5.5vmax;
+	transform: rotateX(180deg);
+}
+
+.up:hover {
+	transform: scale(1.1);
+	filter: invert(1);
+}
+
+.down:hover {
+	transform: scale(1.1) rotateX(180deg);
+	filter: invert(1);
+}

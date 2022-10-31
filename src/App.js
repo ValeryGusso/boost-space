@@ -15,6 +15,7 @@ import Payment from './Pages/Payment/Payment'
 import Registration from './Pages/Registration/Registration'
 import Welcome from './Pages/Welcome/Welcome'
 import { fetchToken } from './Redux/slices/auth'
+import Roster from './Pages/Roster/Roster'
 
 function App() {
 	const navigate = useNavigate()
@@ -26,30 +27,35 @@ function App() {
 
 		if (token) {
 			dispatch(fetchToken({ token }))
-			isAuth ?? navigate('/home')
 		} else {
 			navigate('/welcome')
 		}
 	}, [])
 
+	useEffect(() => {
+		isAuth ? navigate('/home') : navigate('/welcome')
+	}, [isAuth])
+
 	return (
 		<div className="App" data-body={true}>
 			{isAuth ? <Header /> : <AuthMenu />}
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/home" element={<Home />} />
-					<Route path="/orders" element={<MyOrders />} />
-					<Route path="/profile" element={<MyProfile />} />
-					<Route path="/add-order" element={<AddOrder />} />
-					<Route path="/edit/:id" element={<AddOrder />} />
-					<Route path="/admin" element={<Admin />} />
-					<Route path="/calculator" element={<Calculator />} />
-					<Route path="/payment" element={<Payment />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/reg" element={<Registration />} />
-					<Route path="/welcome" element={<Welcome />} />
-				</Routes>
-				{isAuth && <Footer /> }
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/home" element={<Home />} />
+				<Route path="/orders" element={<MyOrders />} />
+				<Route path="/profile" element={<MyProfile />} />
+				<Route path="/add-order" element={<AddOrder />} />
+				<Route path="/edit/:id" element={<AddOrder />} />
+				<Route path="/admin" element={<Admin />} />
+				<Route path="/roster" element={<Roster />} />
+				<Route path="/calculator" element={<Calculator />} />
+				<Route path="/payment" element={<Payment />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/reg" element={<Registration />} />
+				<Route path="/welcome" element={<Welcome />} />
+				<Route path="*" element={<Home />} />
+			</Routes>
+			{isAuth && <Footer />}
 		</div>
 	)
 }

@@ -1,0 +1,9 @@
+.container {
+	min-height: 95vmin;
+	margin-top: 10vmin;
+	padding-top: 2vmin;
+	padding-left: 10vmax;
+	display: grid;
+	grid-template-columns: 35vmax 35vmax;
+	grid-template-rows: repeat(auto-fill, 8vmin);
+}

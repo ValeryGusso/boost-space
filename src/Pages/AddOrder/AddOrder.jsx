@@ -14,7 +14,7 @@ import { useRef } from 'react'
 const AddOrder = () => {
 	const navigate = useNavigate()
 	const params = useParams()
-	const users = useSelector(state => state.users.users)
+	const { users } = useSelector(state => state.users)
 	const isAdmin = useSelector(state => state.auth.isAdmin)
 	const [showList, setShowList] = useState(false)
 	const [showGroup, setShowGroup] = useState(false)
@@ -225,7 +225,9 @@ const AddOrder = () => {
 				</div>
 				<div className={cls.currency}>
 					<p>Валюта</p>
-					<div onClick={togle} className={showList ? cls.activegroup : ''}>{currency}</div>
+					<div onClick={togle} className={showList ? cls.activegroup : ''}>
+						{currency}
+					</div>
 					<ul className={classNames(cls.setcurrency, showList ? cls.show : cls.hide)}>
 						<li onClick={setUsd}>
 							<img src={dollar} alt="" />
@@ -263,5 +265,3 @@ const AddOrder = () => {
 }
 
 export default AddOrder
-
-// '#348f50'
