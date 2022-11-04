@@ -17,6 +17,7 @@ export const fetchToken = createAsyncThunk('auth/fetchToken', async params => {
 
 const initialState = {
 	token: localStorage.getItem('token'),
+	isFirstRender: true,
 	id: '',
 	name: '',
 	avatar: '',
@@ -85,12 +86,14 @@ const authSlice = createSlice({
 		[fetchToken.fulfilled]: (state, action) => {
 			if (action.payload) {
 				state.id = action.payload.id
+				state.isFirstRender = false
 				state.name = action.payload.name
 				state.avatar = action.payload.avatar
 				state.isAuth = true
 				state.isAdmin = action.payload.isAdmin
 			} else {
 				state.id = ''
+				state.isFirstRender = false
 				state.name = ''
 				state.avatar = ''
 				state.isAuth = false
@@ -100,6 +103,7 @@ const authSlice = createSlice({
 		},
 		[fetchToken.rejected]: state => {
 			state.id = ''
+			state.isFirstRender = false
 			state.name = ''
 			state.avatar = ''
 			state.isAuth = false

@@ -20,7 +20,7 @@ import Roster from './Pages/Roster/Roster'
 function App() {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const isAuth = useSelector(state => state.auth.isAuth)
+	const { isAuth } = useSelector(state => state.auth)
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')

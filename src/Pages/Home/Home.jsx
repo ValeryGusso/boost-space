@@ -11,7 +11,7 @@ import cls from './Home.module.css'
 
 const Home = () => {
 	const dispatch = useDispatch()
-	const id = useSelector(state => state.auth.id)
+	const { id, isFirstRender } = useSelector(state => state.auth)
 	const { data, groupCounter, isLoading } = useSelector(state => state.users)
 	const [search, setSearch] = useState([])
 	const [titlePosition, setTitlePosition] = useState({ x: 500, y: 350 })
@@ -109,6 +109,15 @@ const Home = () => {
 		socket.current.send(JSON.stringify({ updated: true }))
 	}
 
+	console.log(isFirstRender)
+	// if (isFirstRender) {
+	// 	return (
+	// 		<div className={cls.wrapper}>
+	// 			<Loader />
+	// 		</div>
+	// 	)
+	// }
+
 	return (
 		<div className={cls.wrapper} onClick={click}>
 			<div className={cls.keys}>
@@ -132,25 +141,27 @@ const Home = () => {
 					</div>
 				)}
 			</div>
-			{ !isLoading && <div className={cls.search}>
-				<p>Поиск ключей: </p>
-				<ul>
-					{dungeonsTitles.map(el => {
-						return (
-							el !== '---' && (
-								<li
-									style={{ '--c': setColor(el) }}
-									key={el}
-									className={search.includes(el) ? cls.searched : cls.nonsearched}
-									onClick={() => select(el)}
-								>
-									{el}
-								</li>
+			{!isLoading && (
+				<div className={cls.search}>
+					<p>Поиск ключей: </p>
+					<ul>
+						{dungeonsTitles.map(el => {
+							return (
+								el !== '---' && (
+									<li
+										style={{ '--c': setColor(el) }}
+										key={el}
+										className={search.includes(el) ? cls.searched : cls.nonsearched}
+										onClick={() => select(el)}
+									>
+										{el}
+									</li>
+								)
 							)
-						)
-					})}
-				</ul>
-			</div> }
+						})}
+					</ul>
+				</div>
+			)}
 			<div
 				className={classNames(cls.titleSelect, showTitle ? cls.show : cls.hide)}
 				style={{ '--titlex': titlePosition.x, '--titley': titlePosition.y }}

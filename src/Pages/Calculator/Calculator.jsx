@@ -25,7 +25,7 @@ const Calculator = () => {
 	const [overallPayment, setOverallPayment] = useState({ usd: 0, rub: 0 })
 	const [renderList, setRenderList] = useState([])
 	const [isLoaded, setIsLoaded] = useState(false)
-	const users = useSelector(state => state.users.users)
+	const {allUsers: users} = useSelector(state => state.users)
 	const isAdmin = useSelector(state => state.auth.isAdmin)
 	const { data: periods } = useSelector(state => state.periods)
 	const [selectedPeriod, setSelectedPeriod] = useState()

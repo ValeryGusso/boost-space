@@ -1,6 +1,7 @@
 import cls from './AuthMenu.module.css'
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const menu = [
 	{
@@ -21,9 +22,10 @@ const pages = ['/welcome', '/login', '/reg']
 
 const Back = () => {
 	const [active, setActive] = useState(0)
+	const { isFirstRender } = useSelector(state => state.auth)
 	const location = useLocation()
 
-	if (!pages.includes(location.pathname)) {
+	if (!pages.includes(location.pathname) || isFirstRender) {
 		return <></>
 	}
 
