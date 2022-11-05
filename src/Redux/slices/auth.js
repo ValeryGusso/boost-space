@@ -47,6 +47,9 @@ const authSlice = createSlice({
 			state.isAdmin = action.payload.isAdmin
 			state.isAuth = true
 		},
+		loaded(state) {
+			state.isFirstRender = false
+		}
 	},
 	extraReducers: {
 		// Авторизация
@@ -112,5 +115,5 @@ const authSlice = createSlice({
 	},
 })
 
-export const { logout, registration } = authSlice.actions
+export const { logout, registration, loaded } = authSlice.actions
 export const authReducer = authSlice.reducer

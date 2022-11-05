@@ -14,7 +14,7 @@ import MyProfile from './Pages/MyProfile/MyProfile'
 import Payment from './Pages/Payment/Payment'
 import Registration from './Pages/Registration/Registration'
 import Welcome from './Pages/Welcome/Welcome'
-import { fetchToken } from './Redux/slices/auth'
+import { fetchToken, loaded } from './Redux/slices/auth'
 import Roster from './Pages/Roster/Roster'
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
 		if (token) {
 			dispatch(fetchToken({ token }))
 		} else {
+			dispatch(loaded())
 			navigate('/welcome')
 		}
 	}, [])
